@@ -33,6 +33,10 @@ resource "google_container_cluster" "primary" {
   network             = "projects/${local.network_project_id}/global/networks/${var.network}"
   deletion_protection = var.deletion_protection
 
+  fleet {
+    project = var.enable_fleet_registration ? var.project_id : null
+  }
+
   dynamic "network_policy" {
     for_each = local.cluster_network_policy
 
@@ -409,6 +413,7 @@ resource "google_container_cluster" "primary" {
       topic   = var.notification_config_topic
     }
   }
+
 }
 /******************************************
   Create Container Cluster node pools

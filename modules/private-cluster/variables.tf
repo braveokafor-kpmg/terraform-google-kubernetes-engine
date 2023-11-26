@@ -16,6 +16,12 @@
 
 // This file was automatically generated from a template in ./autogen/main
 
+variable "enable_fleet_registration" {
+  type        = bool
+  description = "Wether cluster should be registered to ASM fleet"
+  default     = true
+}
+
 variable "project_id" {
   type        = string
   description = "The project ID to host the cluster in (required)"
